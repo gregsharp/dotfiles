@@ -121,8 +121,12 @@ export PATH=$PATH:$HOME/bin
 export DEBFULLNAME='Gregory C. Sharp'
 export DEBEMAIL='gregsharp.geo@yahoo.com'
 
-if [ -f ~/work/plastimatch/extra/gcs6/set_path.sh ]; then
-    . ~/work/plastimatch/extra/gcs6/set_path.sh
+#if [ -f ~/work/plastimatch/extra/gcs6/set_path.sh ]; then
+#    . ~/work/plastimatch/extra/gcs6/set_path.sh
+#fi
+
+if [ -f ~/bin/set_path.sh ]; then
+    source ~/bin/set_path.sh
 fi
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
