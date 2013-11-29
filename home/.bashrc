@@ -8,6 +8,9 @@ case $- in
       *) return;;
 esac
 
+# cf.
+# [ -z "$PS1" ] && return
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -34,6 +37,9 @@ shopt -s checkwinsize
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+
+# cf.
+# if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -108,6 +114,18 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+## GCS Custom stuff
+export PATH=$PATH:$HOME/bin
+
+export DEBFULLNAME='Gregory C. Sharp'
+export DEBEMAIL='gregsharp.geo@yahoo.com'
+
+if [ -f ~/work/plastimatch/extra/gcs6/set_path.sh ]; then
+    . ~/work/plastimatch/extra/gcs6/set_path.sh
+fi
+
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
