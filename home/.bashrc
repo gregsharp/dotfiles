@@ -129,7 +129,15 @@ if [ -f ~/bin/set_path.sh ]; then
     source ~/bin/set_path.sh
 fi
 
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+if [ -d $HOME/.opam/system/bin ]; then
+    PATH=$PATH:$HOME/.opam/system/bin
+    export PATH
+fi
 
+## As a reminder, here is how you commit changes to dotfiles
+## git cd dotfiles
+## git commit -m "Comment here"
+## git push origin master
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
