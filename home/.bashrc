@@ -136,7 +136,7 @@ fi
 
 ## As a reminder, here is how you commit changes to dotfiles
 ## git cd dotfiles
-## git commit -m "Comment here"
+## git commit -a -m "Comment here"
 ## git push origin master
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
