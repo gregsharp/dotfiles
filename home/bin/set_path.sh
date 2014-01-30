@@ -18,6 +18,10 @@ case $CNAME in
 	export PATH=$PATH:$HOME/build/plastimatch-3.18.0
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	;;
+    "sherbert")
+	export PATH=$PATH:$HOME/build/plastimatch
+	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
+	;;
     "slumber")
 	export PATH=$PATH:/cygdrive/c/gcs6/build/plastimatch-cygwin
 	;;

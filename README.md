@@ -9,3 +9,9 @@ printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashr
 
 git clone git://github.com/gregsharp/dotfiles.git $HOME/.homesick/repos/dotfiles
 
+
+How to commit changes
+=====================
+homeshick cd dotfiles
+git commit -m "Message"
+git push origin master

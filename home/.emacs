@@ -254,6 +254,7 @@
 	      auto-mode-alist))
 ;; Apparently the indent is hard coded to 2
 ;; http://pokpolx.blogspot.com/2009/06/setting-tab-indent-width-on-emacs-cmake.html
+(setq cmake-tab-width 4)
 
 ;;-----------------------------------------------------------------------------
 ;; LaTeX/BiBTex
