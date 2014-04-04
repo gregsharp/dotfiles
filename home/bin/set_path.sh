@@ -19,7 +19,7 @@ case $CNAME in
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	;;
     "sherbert")
-	export PATH=$PATH:$HOME/build/plastimatch
+	export PATH=$HOME/build/plastimatch:$PATH
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	;;
     "slumber")
