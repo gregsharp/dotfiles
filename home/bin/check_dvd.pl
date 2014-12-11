@@ -7,8 +7,7 @@ $dvd = "/mnt/dvd";
 @ref_dirs = (
     "/scratch1/archive",
     "/home/gsharp/flac",
-    "/mnt/ehd1/play/flac",
-    "/home/gsharp/mp3"
+    "/mnt/ehd1/archive",
     );
 $dvd_cache = "/tmp/gcs_dvd_cache.txt";
 $ref_cache = "/tmp/gcs_ref_cache.txt";

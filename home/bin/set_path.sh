@@ -26,7 +26,8 @@ case $CNAME in
 	export PATH=$PATH:/cygdrive/c/gcs6/build/plastimatch-cygwin
 	;;
     "wormwood")
-	export PATH=$PATH:$HOME/build/plastimatch-deb
+	#export PATH=$PATH:$HOME/build/plastimatch-deb
+	export PATH=$HOME/build/plastimatch-4.4.2:$PATH
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	;;
     *)

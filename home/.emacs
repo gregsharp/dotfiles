@@ -350,3 +350,6 @@
 ;; Always show line number
 (line-number-mode t)
 (column-number-mode t)
+
+;; Allow me to use this handy command!
+(put 'erase-buffer 'disabled nil)
