@@ -8,7 +8,7 @@
 ;; Load from my private directory <roshar>
 (add-to-list 'load-path (expand-file-name "~/libs/emacs/"))
 (add-to-list 'load-path (expand-file-name "~/elisp/"))
-
+(add-to-list 'load-path (expand-file-name "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs"))
 ;; Add directories recursively
 ;;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
 ;;      (normal-top-level-add-subdirs-to-load-path))
@@ -350,6 +350,4 @@
 ;; Always show line number
 (line-number-mode t)
 (column-number-mode t)
-
-;; Allow me to use this handy command!
 (put 'erase-buffer 'disabled nil)

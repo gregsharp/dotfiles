@@ -141,6 +141,12 @@ if [ -d $HOME/.opam/system/bin ]; then
     export PATH
 fi
 
+# FLUKA
+export FLUPRO=$HOME/build/fluka2011.2b.6
+
+# OPAM configuration
+. /PHShome/gcs6/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
 ## As a reminder, here is how you commit changes to dotfiles
 ## git cd dotfiles
 ## git commit -a -m "Comment here"
