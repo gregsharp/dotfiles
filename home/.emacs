@@ -247,7 +247,7 @@
 ;;-----------------------------------------------------------------------------
 ;; CMake
 ;;-----------------------------------------------------------------------------
-(require 'cmake-mode)
+(autoload 'cmake-mode "cmake-mode" "Start CMake mode" t)
 (setq auto-mode-alist
       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
 		("\\.cmake\\'" . cmake-mode))
@@ -325,9 +325,9 @@
 (set-face-attribute 'default nil :height 120)
 
 ;; This is for gelato
-(if (string-equal system-name "gelato.mgh.harvard.edu")
-    (set-default-font 
-     "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1"))
+;(if (string-equal system-name "gelato.mgh.harvard.edu")
+;    (set-default-font 
+;     "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1"))
 
 ;;-----------------------------------------------------------------------------
 ;; Miscellany
