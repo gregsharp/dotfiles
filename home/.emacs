@@ -202,6 +202,9 @@
 ;; Matlab mode (distinct from octave mode)
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 
+;; Emacs 24 likes this
+(require 'octave)
+
 (defun my-matlab-mode-hook ()
   ;; See matlab.el for more variable that can be user defined...
   ;; (setq matlab-function-indent t)  ; if you want function bodies indented
