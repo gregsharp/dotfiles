@@ -39,6 +39,9 @@
 ;; Tell emacs not to background when hitting CTRL-z
 (global-set-key "\C-Z" nil)
 
+;; Emacs dorkily changed CTRL-x SPC to rectangle-mark-mode ???
+(global-set-key (kbd "C-x SPC") 'gud-break)
+
 (defun scroll-up-in-place(n)
   "Like scroll-up, but one line."
   (interactive "p")
