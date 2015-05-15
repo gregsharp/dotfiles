@@ -159,6 +159,10 @@ if [ -d $HOME/build/src/vowpal_wabbit/vowpalwabbit ]; then
     export PATH
 fi
 
+# Quilt
+alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+complete -F _quilt_completion $_quilt_complete_opt dquilt
+
 ## As a reminder, here is how you commit changes to dotfiles
 ## git cd dotfiles
 ## git commit -a -m "Comment here"
