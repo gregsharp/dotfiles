@@ -212,7 +212,7 @@
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 
 ;; Emacs 24 likes this
-(require 'octave)
+(require 'octave nil t)
 
 (defun my-matlab-mode-hook ()
   ;; See matlab.el for more variable that can be user defined...
