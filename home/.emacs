@@ -5,10 +5,16 @@
 ;;-----------------------------------------------------------------------------
 ;; Loading startup files
 ;;-----------------------------------------------------------------------------
-;; Load from my private directory <roshar>
-(add-to-list 'load-path (expand-file-name "~/libs/emacs/"))
-(add-to-list 'load-path (expand-file-name "~/elisp/"))
-(add-to-list 'load-path (expand-file-name "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs"))
+(defun add-to-load-path (dir)
+  (if (file-exists-p dir)
+      (add-to-list 'load-path (expand-file-name dir))))
+
+;; Load from my private directory
+(add-to-load-path "~/libs/emacs/")
+(add-to-load-path "~/.emacs.d/lisp/")
+(add-to-load-path "~/elisp/")
+(add-to-load-path "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs")
+
 ;; Add directories recursively
 ;;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
 ;;      (normal-top-level-add-subdirs-to-load-path))
