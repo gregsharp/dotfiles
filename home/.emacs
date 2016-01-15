@@ -64,6 +64,16 @@
 )
 
 ;;-----------------------------------------------------------------------------
+;; MELPA:  http://melpa.org
+;;-----------------------------------------------------------------------------
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+;;-----------------------------------------------------------------------------
 ;; Clipboard
 ;;-----------------------------------------------------------------------------
 ;; I like to make emacs use the clipboard better
@@ -200,6 +210,20 @@
 
 ;; Stupid Emacs thinks that .m is an Objective C file!  Fie!
 (setq auto-mode-alist (delete '("\\.m\\'" . objc-mode) auto-mode-alist))
+
+;;-----------------------------------------------------------------------------
+;; semantic-refactor
+;;-----------------------------------------------------------------------------
+(when (require 'srefactor nil t)
+    (require 'srefactor-lisp)
+
+  (semantic-mode 1)
+  (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
+  (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
+  (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
+  (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer))
 
 ;;-----------------------------------------------------------------------------
 ;; Octave/Matlab
