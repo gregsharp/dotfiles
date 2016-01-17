@@ -5,10 +5,16 @@
 ;;-----------------------------------------------------------------------------
 ;; Loading startup files
 ;;-----------------------------------------------------------------------------
-;; Load from my private directory <roshar>
-(add-to-list 'load-path (expand-file-name "~/libs/emacs/"))
-(add-to-list 'load-path (expand-file-name "~/elisp/"))
-(add-to-list 'load-path (expand-file-name "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs"))
+(defun add-to-load-path (dir)
+  (if (file-exists-p dir)
+      (add-to-list 'load-path (expand-file-name dir))))
+
+;; Load from my private directory
+(add-to-load-path "~/libs/emacs/")
+(add-to-load-path "~/.emacs.d/lisp/")
+(add-to-load-path "~/elisp/")
+(add-to-load-path "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs")
+
 ;; Add directories recursively
 ;;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
 ;;      (normal-top-level-add-subdirs-to-load-path))
@@ -39,6 +45,9 @@
 ;; Tell emacs not to background when hitting CTRL-z
 (global-set-key "\C-Z" nil)
 
+;; Emacs dorkily changed CTRL-x SPC to rectangle-mark-mode ???
+(global-set-key (kbd "C-x SPC") 'gud-break)
+
 (defun scroll-up-in-place(n)
   "Like scroll-up, but one line."
   (interactive "p")
@@ -53,6 +62,16 @@
   (vi-find-matching-paren)
   (latex-mode)
 )
+
+;;-----------------------------------------------------------------------------
+;; MELPA:  http://melpa.org
+;;-----------------------------------------------------------------------------
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
 
 ;;-----------------------------------------------------------------------------
 ;; Clipboard
@@ -193,6 +212,20 @@
 (setq auto-mode-alist (delete '("\\.m\\'" . objc-mode) auto-mode-alist))
 
 ;;-----------------------------------------------------------------------------
+;; semantic-refactor
+;;-----------------------------------------------------------------------------
+(when (require 'srefactor nil t)
+    (require 'srefactor-lisp)
+
+  (semantic-mode 1)
+  (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
+  (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
+  (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
+  (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer))
+
+;;-----------------------------------------------------------------------------
 ;; Octave/Matlab
 ;;-----------------------------------------------------------------------------
 ;; Choose whether to use matlab mode or octave mode
@@ -203,7 +236,7 @@
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 
 ;; Emacs 24 likes this
-(require 'octave)
+(require 'octave nil t)
 
 (defun my-matlab-mode-hook ()
   ;; See matlab.el for more variable that can be user defined...

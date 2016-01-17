@@ -146,13 +146,22 @@ fi
 if [ -d $HOME/.opam/system/bin ]; then
     PATH=$PATH:$HOME/.opam/system/bin
     export PATH
+    # OPAM configuration
+    #. /PHShome/gcs6/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 fi
 
 # FLUKA
 export FLUPRO=$HOME/build/fluka2011.2b.6
 
-# OPAM configuration
-. /PHShome/gcs6/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# VW
+if [ -d $HOME/build/src/vowpal_wabbit/vowpalwabbit ]; then
+    PATH=$PATH:$HOME/build/src/vowpal_wabbit/vowpalwabbit
+    export PATH
+fi
+
+# Quilt
+alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+complete -F _quilt_completion $_quilt_complete_opt dquilt
 
 ## As a reminder, here is how you commit changes to dotfiles
 ## git cd dotfiles
