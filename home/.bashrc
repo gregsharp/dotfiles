@@ -150,6 +150,11 @@ if [ -d $HOME/.opam/system/bin ]; then
     #. /PHShome/gcs6/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 fi
 
+# EGS
+export EGS_CONFIG="$HOME/build/EGSnrc/HEN_HOUSE/specs/linux64.conf"
+export EGS_HOME="$HOME/build/EGSnrc/egs_home"
+alias "egs=source ~/build/EGSnrc/HEN_HOUSE/scripts/egsnrc_bashrc_additions"
+
 # FLUKA
 export FLUPRO=$HOME/build/fluka2011.2b.6
 

@@ -31,11 +31,11 @@
 ;; ALT-r       Revert buffer                          go to center of window
 ;; CTL-L       Recenter                               recenter + highlight
 ;;-----------------------------------------------------------------------------
+(global-set-key "\M-e" 'erase-buffer)
 (global-set-key "\M-r" 'revert-buffer)
 (global-set-key "\M-c" 'compile)
 (global-set-key "\C-t" 'goto-line)
 (define-key global-map "\M-s" 'load-file)
-
 (define-key global-map "\M-]" 'revert-buffer)
 
 ;; Stupid emacs changed ^l to include highlighting of code, which is 
@@ -290,7 +290,7 @@
 	      auto-mode-alist))
 ;; Apparently the indent is hard coded to 2
 ;; http://pokpolx.blogspot.com/2009/06/setting-tab-indent-width-on-emacs-cmake.html
-(setq cmake-tab-width 4)
+(setq cmake-tab-width 2)
 
 ;;-----------------------------------------------------------------------------
 ;; LaTeX/BiBTex
