@@ -90,11 +90,13 @@ $dvd_dir = catfile ($dvd, $series);
 if (! -d $dvd_dir) {
     $dvd_dir = $dvd;
 }
-# Special hacks for older dvds: "data-01" through "data-04"
+# Special hacks for older dvds
 ($series eq "data-01") and $dvd_dir = catfile ($dvd_dir, "data");
 ($series eq "data-02") and $dvd_dir = catfile ($dvd_dir, "data-2");
 ($series eq "data-03") and $dvd_dir = catfile ($dvd_dir, "data-3");
 ($series eq "data-04") and $dvd_dir = catfile ($dvd_dir, "data-4");
+($series eq "studio-002") and $dvd_dir = catfile ($dvd_dir, "library");
+($series eq "studio-003") and $dvd_dir = catfile ($dvd_dir, "library");
 if (! -d $dvd_dir) {
     die "Can't find reference directory: $dvd_dir";
 }

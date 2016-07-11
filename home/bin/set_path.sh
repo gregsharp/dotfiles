@@ -24,7 +24,7 @@ case $CNAME in
 	;;
     "wormwood")
 	#export PATH=$PATH:$HOME/build/plastimatch-deb
-	export PATH=$HOME/build/plastimatch-4.4.2:$PATH
+	export PATH=$HOME/build/plastimatch-4.8.2:$PATH
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	export PATH=$PATH:$HOME/work/plastimatch/extra/vw
 	;;
