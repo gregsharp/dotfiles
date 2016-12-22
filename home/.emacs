@@ -128,6 +128,8 @@
        (statement-cont             . 4)
        (stream-op                  . 4)
        (substatement-open          . 0)
+       (template-args-cont         . +)
+       (topmost-intro-cont         . +)
        ))))
 
 (c-add-style 
