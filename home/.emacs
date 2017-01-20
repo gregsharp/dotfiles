@@ -129,7 +129,10 @@
        (stream-op                  . 4)
        (substatement-open          . 0)
        (template-args-cont         . +)
-       (topmost-intro-cont         . +)
+       ;; This can occur in places where indentation is and is not
+       ;; desirable.  What to do??
+;;       (topmost-intro-cont         . +)
+       (topmost-intro-cont         . c-lineup-topmost-intro-cont)
        ))))
 
 (c-add-style 
@@ -184,6 +187,31 @@
        ;;(substatement-open          . 0)
        ))))
 
+(c-add-style 
+ "tramp-codingstyle"
+ '((c-basic-offset . 2)
+   (c-comment-only-line-offset . 0)
+   (c-hanging-braces-alist . ((substatement-open before after)))
+   (indent-tabs-mode . nil)
+   (c-offsets-alist 
+    . (
+       (access-label               . -)
+       (arglist-intro              . +)
+       (arglist-cont-nonempty      . +)
+       (arglist-close              . 0)
+       (inline-open                . 0)
+       (innamespace                . 0)
+       (label                      . 0)
+
+       ;; This is based on SlicerRt ...
+       (statement-block-intro      . +)
+       (substatement-open          . 0)
+
+       ;;(statement-cont             . 4)
+       ;;(stream-op                  . 4)
+       ;;(substatement-open          . 0)
+       ))))
+
 ;; Choose whether to use slicer-style or plastimatch-style indentation
 ;; Ref: http://www.emacswiki.org/emacs/IndentingC
 (defun choose-c-style ()
@@ -196,6 +224,8 @@
 	     (c-set-style "slicer-codingstyle"))
 	    ((string-match "topas" buffer-file-name)
 	     (c-set-style "topas-codingstyle"))
+	    ((string-match "dicom_tramp" buffer-file-name)
+	     (c-set-style "tramp-codingstyle"))
 	    (t (c-set-style "plm-codingstyle")))
     ;; else if not buffer-file-name
     (c-set-style "plm-codingstyle")))
