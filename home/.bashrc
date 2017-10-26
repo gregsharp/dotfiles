@@ -158,6 +158,24 @@ alias "egs=source ~/build/EGSnrc/HEN_HOUSE/scripts/egsnrc_bashrc_additions"
 # FLUKA
 export FLUPRO=$HOME/build/fluka2011.2b.6
 
+# TOPAS
+if [ -d $HOME/topas ]; then
+    export G4LEDATA=~/G4Data/G4EMLOW6.48
+    export G4NEUTRONHPDATA=~/G4Data/G4NDL4.5
+    export G4LEVELGAMMADATA=~/G4Data/PhotonEvaporation3.2
+    export G4RADIOACTIVEDATA=~/G4Data/RadioactiveDecay4.4
+    export G4SAIDXSDATA=~/G4Data/G4SAIDDATA1.1
+    export G4NEUTRONXSDATA=~/G4Data/G4NEUTRONXS1.4
+    export G4PIIDATA=~/G4Data/G4PII1.3
+    export G4REALSURFACEDATA=~/G4Data/RealSurface1.0
+    export G4ABLADATA=~/G4Data/G4ABLA3.0
+    export G4ENSDFSTATEDATA=~/G4Data/G4ENSDFSTATE1.2.1
+    export G4TENDLDATA=~/G4Data/G4TENDL1.0
+    export LD_LIBRARY_PATH=~/topas/libexternal/:$LD_LIBRARY_PATH
+    PATH=$PATH:$HOME/topas
+    export PATH
+fi
+
 # VW
 if [ -d $HOME/build/src/vowpal_wabbit/vowpalwabbit ]; then
     PATH=$PATH:$HOME/build/src/vowpal_wabbit/vowpalwabbit
