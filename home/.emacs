@@ -1,4 +1,4 @@
-;;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
 ;; .emacs
 ;;-----------------------------------------------------------------------------
 
@@ -369,10 +369,6 @@
 ;;  '(current-language-environment "Latin-1")
 ;;  '(default-input-method "latin-1-prefix")
 ;;  '(inhibit-startup-screen t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
-  ;; Your init file should contain only one such instance.
- )
 
 ;;-----------------------------------------------------------------------------
 ;; SLIME
@@ -403,6 +399,15 @@
 ;    (set-default-font 
 ;     "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1"))
 
+;; icecream has poor choice for highlight background color
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(region ((t (:background "gray" :distant-foreground "gtk_selection_fg_color")))))
+
+
 ;;-----------------------------------------------------------------------------
 ;; Miscellany
 ;;-----------------------------------------------------------------------------
@@ -425,3 +430,9 @@
 (line-number-mode t)
 (column-number-mode t)
 (put 'erase-buffer 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

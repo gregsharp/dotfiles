@@ -12,6 +12,11 @@ case $CNAME in
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	export PATH=$PATH:$HOME/work/plastimatch/extra/vw
 	;;
+    "icecream")
+	export PATH=$HOME/build/plastimatch:$PATH
+	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
+	export PATH=$PATH:$HOME/work/plastimatch/extra/vw
+	;;
     "redfish")
 	export PATH=$PATH:$HOME/build/plastimatch-3.18.0
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
