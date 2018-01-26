@@ -33,6 +33,9 @@ case $CNAME in
 	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
 	export PATH=$PATH:$HOME/work/plastimatch/extra/vw
 	;;
+    "icemilk")
+	export PATH=/usr/local/bin:$PATH
+	;;
     *)
 	echo "Unknown machine"
 	;;
