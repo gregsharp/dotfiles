@@ -1,3 +1,3 @@
 killall synergyc
-sleep 20
+sleep 10
 synergyc w0109966
