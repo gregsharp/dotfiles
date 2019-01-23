@@ -5,7 +5,7 @@ Greg's dotfiles
 
 git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 
-git clone git://github.com/gregsharp/dotfiles.git $HOME/.homesick/repos/dotfiles
+git clone https://github.com/gregsharp/dotfiles.git $HOME/.homesick/repos/dotfiles
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
