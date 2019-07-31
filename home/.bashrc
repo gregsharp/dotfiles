@@ -186,6 +186,17 @@ fi
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 complete -F _quilt_completion $_quilt_complete_opt dquilt
 
+# CUDA
+case "$HOSTNAME" in
+sherbert)
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64:/usr/local/cuda-9.0/lib64/stubs
+    ;;
+*)
+    # Do nothing
+    ;;
+esac
+
+# Homeshick
 ## As a reminder, here is how you commit changes to dotfiles
 ## git cd dotfiles
 ## git commit -a -m "Comment here"

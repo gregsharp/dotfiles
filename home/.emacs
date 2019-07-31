@@ -115,6 +115,7 @@
    (c-comment-only-line-offset . 0)
    (c-hanging-braces-alist . ((substatement-open before after)))
    (indent-tabs-mode . nil)
+   (c-noise-macro-names . ("PLMBASE_API" "PLMUTIL_API"))
    (c-offsets-alist 
     . (
        (access-label               . -)
@@ -301,6 +302,8 @@
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (add-hook 'python-mode-hook
 	  (lambda ()
+	    (setq indent-tabs-mode nil
+		  tab-width 2)
 	    (set (make-variable-buffer-local 'beginning-of-defun-function)
 		 'py-beginning-of-def-or-class)
 	    (setq outline-regexp "def\\|class ")))
