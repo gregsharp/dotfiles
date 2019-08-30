@@ -189,7 +189,8 @@ complete -F _quilt_completion $_quilt_complete_opt dquilt
 # CUDA
 case "$HOSTNAME" in
 sherbert)
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64:/usr/local/cuda-9.0/lib64/stubs
+    #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64:/usr/local/cuda-9.0/lib64/stubs
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
     ;;
 *)
     # Do nothing

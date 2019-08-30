@@ -10,10 +10,10 @@
       (add-to-list 'load-path (expand-file-name dir))))
 
 ;; Load from my private directory
-(add-to-load-path "~/libs/emacs/")
-(add-to-load-path "~/.emacs.d/lisp/")
-(add-to-load-path "~/elisp/")
-(add-to-load-path "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs")
+;(add-to-load-path "~/libs/emacs/")
+;(add-to-load-path "~/.emacs.d/lisp/")
+;(add-to-load-path "~/elisp/")
+;;(add-to-load-path "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs")
 
 ;; Add directories recursively
 ;;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
@@ -67,11 +67,44 @@
 ;; MELPA:  http://melpa.org
 ;;-----------------------------------------------------------------------------
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl
+    (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
+
+;;-----------------------------------------------------------------------------
+;; C++ IDE features
+;; Ref: http://martinsosic.com/development/emacs/2017/12/09/emacs-cpp-ide.html
+;; See also cquery reference in comments
+;;-----------------------------------------------------------------------------
+(if (require 'req-package nil t)
+    (progn
+      (req-package company
+	:config
+	(progn
+	  (add-hook 'after-init-hook 'global-company-mode)
+	  (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+	  (setq company-idle-delay 0)))
+      (req-package flycheck
+	:config
+	(progn
+	  (global-flycheck-mode)))
+      (req-package helm)
+      ))
+
 
 ;;-----------------------------------------------------------------------------
 ;; Clipboard
@@ -103,6 +136,7 @@
 (put 'multiple-value-bind 'lisp-indent-hook 1)
 (put 'with-open-file      'lisp-indent-hook 1)
 (put 'unwind-protect      'lisp-indent-hook 1)
+(put 'req-package         'lisp-indent-hook 1)
 
 ;;-----------------------------------------------------------------------------
 ;; C/C++/Java
@@ -115,7 +149,9 @@
    (c-comment-only-line-offset . 0)
    (c-hanging-braces-alist . ((substatement-open before after)))
    (indent-tabs-mode . nil)
-   (c-noise-macro-names . ("PLMBASE_API" "PLMUTIL_API"))
+   (c-noise-macro-names . ("PLMSYS_API" "PLMBASE_API" "PLMUTIL_API" 
+			   "PLMREGISTER_API" "PLMDOSE_API"
+			   "PLMRECONSTRUCT_API"))
    (c-offsets-alist 
     . (
        (access-label               . -)
@@ -438,4 +474,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (el-get req-package yaml-mode tabbar session pod-mode muttrc-mode mutt-alias markdown-mode irony initsplit htmlize graphviz-dot-mode folding flycheck eproject diminish csv-mode company browse-kill-ring boxquote bm bar-cursor apache-mode srefactor))))
