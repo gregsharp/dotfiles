@@ -2,6 +2,11 @@
 ;; .emacs
 ;;-----------------------------------------------------------------------------
 
+;; Dump custom-set-variables to an external file
+(setq custom-file "~/.emacs.d/custom-file.el")
+(when (file-exists-p custom-file)
+  (load-file custom-file))
+
 ;;-----------------------------------------------------------------------------
 ;; Loading startup files
 ;;-----------------------------------------------------------------------------
@@ -79,10 +84,9 @@ There are two things you can do about this warning:
 2. Remove this warning from your init file so you won't see it again."))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-  (when (< emacs-major-version 24)
-    ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+  (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")) t))
+  ;(add-to-list 'package-archives (cons "gnu" (concat "http" "://elpa.gnu.org/packages/")) t))
+
 (package-initialize)
 
 ;;-----------------------------------------------------------------------------
@@ -476,4 +480,4 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (el-get req-package yaml-mode tabbar session pod-mode muttrc-mode mutt-alias markdown-mode irony initsplit htmlize graphviz-dot-mode folding flycheck eproject diminish csv-mode company browse-kill-ring boxquote bm bar-cursor apache-mode srefactor))))
+    (projectile flycheck-rtags company-rtags helm-rtags irony-eldoc flycheck-irony company-irony helm helm-flycheck helm-lsp company-lsp flx flx-ido yasnippet yasnippet-snippets rtags ccls eglot el-get req-package yaml-mode tabbar session pod-mode muttrc-mode mutt-alias markdown-mode irony initsplit htmlize graphviz-dot-mode folding flycheck eproject diminish csv-mode company browse-kill-ring boxquote bm bar-cursor apache-mode srefactor))))
