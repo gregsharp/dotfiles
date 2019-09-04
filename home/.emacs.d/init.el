@@ -2,27 +2,33 @@
 ;; .emacs
 ;;-----------------------------------------------------------------------------
 
-;; Dump custom-set-variables to an external file
-(setq custom-file "~/.emacs.d/custom-file.el")
-(when (file-exists-p custom-file)
-  (load-file custom-file))
-
 ;;-----------------------------------------------------------------------------
-;; Loading startup files
+;; Some functions of dubious utility
 ;;-----------------------------------------------------------------------------
 (defun add-to-load-path (dir)
   (if (file-exists-p dir)
       (add-to-list 'load-path (expand-file-name dir))))
 
-;; Load from my private directory
-;(add-to-load-path "~/libs/emacs/")
-;(add-to-load-path "~/.emacs.d/lisp/")
-;(add-to-load-path "~/elisp/")
-;;(add-to-load-path "C:/Program Files/CMake 2.8/share/cmake-2.8/editors/emacs")
+(defun scroll-up-in-place(n)
+  "Like scroll-up, but one line."
+  (interactive "p")
+  (scroll-up n))
 
-;; Add directories recursively
-;;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-;;      (normal-top-level-add-subdirs-to-load-path))
+; Random testing
+(defun zzz (n)
+  "Like scroll-up, but one line."
+  (interactive "p")
+  (vi-mode)
+  (vi-find-matching-paren)
+  (latex-mode)
+)
+
+;;-----------------------------------------------------------------------------
+;; Dump custom-set-variables to an external file
+;;-----------------------------------------------------------------------------
+(setq custom-file "~/.emacs.d/custom-file.el")
+(when (file-exists-p custom-file)
+  (load-file custom-file))
 
 ;;-----------------------------------------------------------------------------
 ;; Key bindings
@@ -53,23 +59,8 @@
 ;; Emacs dorkily changed CTRL-x SPC to rectangle-mark-mode ???
 (global-set-key (kbd "C-x SPC") 'gud-break)
 
-(defun scroll-up-in-place(n)
-  "Like scroll-up, but one line."
-  (interactive "p")
-  (scroll-up n))
-
-; Random testing
-; (global-set-key "\M-8" 'zzz)
-(defun zzz (n)
-  "Like scroll-up, but one line."
-  (interactive "p")
-  (vi-mode)
-  (vi-find-matching-paren)
-  (latex-mode)
-)
-
 ;;-----------------------------------------------------------------------------
-;; MELPA:  http://melpa.org
+;; Package management
 ;;-----------------------------------------------------------------------------
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -83,32 +74,27 @@ There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")) t))
-  ;(add-to-list 'package-archives (cons "gnu" (concat "http" "://elpa.gnu.org/packages/")) t))
-
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")))
+  ;add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/"))
+  t)
 (package-initialize)
+
+;;-----------------------------------------------------------------------------
+;; use-package
+;;-----------------------------------------------------------------------------
+(if (not (package-installed-p 'use-package))
+    (progn
+      (package-refresh-contents)
+      (package-install 'use-package)))
 
 ;;-----------------------------------------------------------------------------
 ;; C++ IDE features
 ;; Ref: http://martinsosic.com/development/emacs/2017/12/09/emacs-cpp-ide.html
 ;; See also cquery reference in comments
 ;;-----------------------------------------------------------------------------
-(if (require 'req-package nil t)
-    (progn
-      (req-package company
-	:config
-	(progn
-	  (add-hook 'after-init-hook 'global-company-mode)
-	  (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
-	  (setq company-idle-delay 0)))
-      (req-package flycheck
-	:config
-	(progn
-	  (global-flycheck-mode)))
-      (req-package helm)
-      ))
-
+(if (and (require 'use-package nil t)
+	 (file-exists-p "~/.emacs.d/use-packages.el"))
+    (load-file "~/.emacs.d/use-packages.el"))
 
 ;;-----------------------------------------------------------------------------
 ;; Clipboard
@@ -140,7 +126,7 @@ There are two things you can do about this warning:
 (put 'multiple-value-bind 'lisp-indent-hook 1)
 (put 'with-open-file      'lisp-indent-hook 1)
 (put 'unwind-protect      'lisp-indent-hook 1)
-(put 'req-package         'lisp-indent-hook 1)
+(put 'use-package         'lisp-indent-hook 1)
 
 ;;-----------------------------------------------------------------------------
 ;; C/C++/Java
@@ -473,11 +459,3 @@ There are two things you can do about this warning:
 (line-number-mode t)
 (column-number-mode t)
 (put 'erase-buffer 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (projectile flycheck-rtags company-rtags helm-rtags irony-eldoc flycheck-irony company-irony helm helm-flycheck helm-lsp company-lsp flx flx-ido yasnippet yasnippet-snippets rtags ccls eglot el-get req-package yaml-mode tabbar session pod-mode muttrc-mode mutt-alias markdown-mode irony initsplit htmlize graphviz-dot-mode folding flycheck eproject diminish csv-mode company browse-kill-ring boxquote bm bar-cursor apache-mode srefactor))))
