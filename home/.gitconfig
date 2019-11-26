@@ -1,0 +1,9 @@
+[user]
+name = Gregory C. Sharp
+email = gregsharp.geo@yahoo.com
+[core]
+editor = emacs
+pager =
+[hub]
+	username = gregsharp
+	oauthtoken = 292ae54a0c45f7dbc1054a107df9479a20062c47
