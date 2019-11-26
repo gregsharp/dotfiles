@@ -1,6 +1,4 @@
-;-----------------------------------------------------------------------------
-;; .emacs
-;;-----------------------------------------------------------------------------
+;;; init.el --- An emacs startup file
 
 ;;-----------------------------------------------------------------------------
 ;; Some functions of dubious utility
@@ -14,9 +12,9 @@
   (interactive "p")
   (scroll-up n))
 
-; Random testing
+;; Random testing
 (defun zzz (n)
-  "Like scroll-up, but one line."
+  "This function is for random testing"
   (interactive "p")
   (vi-mode)
   (vi-find-matching-paren)
@@ -127,6 +125,10 @@ There are two things you can do about this warning:
 (put 'with-open-file      'lisp-indent-hook 1)
 (put 'unwind-protect      'lisp-indent-hook 1)
 (put 'use-package         'lisp-indent-hook 1)
+
+;; How to force style for emacs-lisp mode?
+;;((emacs-lisp-mode
+;;  (indent-tabs-mode nil)))
 
 ;;-----------------------------------------------------------------------------
 ;; C/C++/Java
