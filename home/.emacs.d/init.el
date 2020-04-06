@@ -253,7 +253,7 @@ There are two things you can do about this warning:
 (defun choose-c-style ()
   (if (buffer-file-name)
       ;; choose coding style based on filename
-      (cond ((or (string-match "Slicer4" buffer-file-name)
+      (cond ((or (string-match "Slicer" buffer-file-name)
 		 (string-match "PlmSlicerBspline" buffer-file-name)
 		 (string-match "SlicerRt" buffer-file-name)
 		 )
