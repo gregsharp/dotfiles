@@ -14,5 +14,9 @@
   :ensure t
 	     )
 
+(use-package magit
+  :ensure t
+	     )
+
 ;;(if (require 'ccls nil t)
 

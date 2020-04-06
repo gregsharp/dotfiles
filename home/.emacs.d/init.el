@@ -110,6 +110,13 @@ There are two things you can do about this warning:
     (make-directory "~/.emacs-backups"))
 
 ;;-----------------------------------------------------------------------------
+;; Magit
+;;-----------------------------------------------------------------------------
+(setq backup-directory-alist `(("." . "~/.emacs-backups")))
+(if (not (file-directory-p "~/.emacs-backups"))
+    (make-directory "~/.emacs-backups"))
+
+;;-----------------------------------------------------------------------------
 ;; LISP
 ;;-----------------------------------------------------------------------------
 (put 'lambda    'lisp-indent-hook 'defun)
