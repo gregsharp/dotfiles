@@ -304,14 +304,14 @@ There are two things you can do about this warning:
 ;; Octave/Matlab
 ;;-----------------------------------------------------------------------------
 ;; Choose whether to use matlab mode or octave mode
-(setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
-;;(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
+;;(setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
 
 ;; Matlab mode (distinct from octave mode)
-(autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
+;;(autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 
 ;; Emacs 24 likes this
-(require 'octave nil t)
+;;(require 'octave nil t)
 
 (defun my-matlab-mode-hook ()
   ;; See matlab.el for more variable that can be user defined...

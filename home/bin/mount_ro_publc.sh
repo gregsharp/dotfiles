@@ -1,1 +1,2 @@
-sudo mount -t cifs -o user=gcs6,uid=gcs6 //cifs2.partners.org/ro_publc$ /PHShome/gcs6/ro_publc
+sudo mount -t cifs -o user=gcs6,uid=$USER //cifs2.partners.org/ro_publc$ $HOME/ro_publc
+
