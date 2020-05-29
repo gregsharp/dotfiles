@@ -31,8 +31,8 @@ case $CNAME in
 	;;
     "sherbert")
 	export PATH=$HOME/build/plastimatch:$PATH
-	export PATH=$PATH:$HOME/work/plastimatch/extra/perl
-	export PATH=$PATH:$HOME/work/plastimatch/extra/vw
+	export PATH=$PATH:$HOME/shared/plastimatch/extra/perl
+	export PATH=$PATH:$HOME/shared/plastimatch/extra/vw
 	;;
     "wormwood")
 	#export PATH=$PATH:$HOME/build/plastimatch-deb
