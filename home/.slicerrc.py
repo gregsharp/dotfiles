@@ -3,7 +3,7 @@ def NoInterpolate(caller,event):
     if node.IsA('vtkMRMLScalarVolumeDisplayNode'):
       node.SetInterpolate(0)
 
-slicer.mrmlScene.AddObserver(slicer.mrmlScene.NodeAddedEvent, NoInterpolate)
+#slicer.mrmlScene.AddObserver(slicer.mrmlScene.NodeAddedEvent, NoInterpolate)
 
 for node in getNodesByClass('vtkMRMLSliceCompositeNode'):
   node.SetLinkedControl(1)

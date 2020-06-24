@@ -1,6 +1,4 @@
-;-----------------------------------------------------------------------------
-;; .emacs
-;;-----------------------------------------------------------------------------
+;;; init.el --- An emacs startup file
 
 ;;-----------------------------------------------------------------------------
 ;; Some functions of dubious utility
@@ -14,9 +12,9 @@
   (interactive "p")
   (scroll-up n))
 
-; Random testing
+;; Random testing
 (defun zzz (n)
-  "Like scroll-up, but one line."
+  "This function is for random testing"
   (interactive "p")
   (vi-mode)
   (vi-find-matching-paren)
@@ -105,6 +103,20 @@ There are two things you can do about this warning:
 ;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
 ;;-----------------------------------------------------------------------------
+;; Backup files
+;;-----------------------------------------------------------------------------
+(setq backup-directory-alist `(("." . "~/.emacs-backups")))
+(if (not (file-directory-p "~/.emacs-backups"))
+    (make-directory "~/.emacs-backups"))
+
+;;-----------------------------------------------------------------------------
+;; Magit
+;;-----------------------------------------------------------------------------
+(setq backup-directory-alist `(("." . "~/.emacs-backups")))
+(if (not (file-directory-p "~/.emacs-backups"))
+    (make-directory "~/.emacs-backups"))
+
+;;-----------------------------------------------------------------------------
 ;; LISP
 ;;-----------------------------------------------------------------------------
 (put 'lambda    'lisp-indent-hook 'defun)
@@ -127,6 +139,10 @@ There are two things you can do about this warning:
 (put 'with-open-file      'lisp-indent-hook 1)
 (put 'unwind-protect      'lisp-indent-hook 1)
 (put 'use-package         'lisp-indent-hook 1)
+
+;; How to force style for emacs-lisp mode?
+;;((emacs-lisp-mode
+;;  (indent-tabs-mode nil)))
 
 ;;-----------------------------------------------------------------------------
 ;; C/C++/Java
@@ -244,7 +260,7 @@ There are two things you can do about this warning:
 (defun choose-c-style ()
   (if (buffer-file-name)
       ;; choose coding style based on filename
-      (cond ((or (string-match "Slicer4" buffer-file-name)
+      (cond ((or (string-match "Slicer" buffer-file-name)
 		 (string-match "PlmSlicerBspline" buffer-file-name)
 		 (string-match "SlicerRt" buffer-file-name)
 		 )
@@ -288,14 +304,14 @@ There are two things you can do about this warning:
 ;; Octave/Matlab
 ;;-----------------------------------------------------------------------------
 ;; Choose whether to use matlab mode or octave mode
-(setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
-;;(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
+;;(setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
 
 ;; Matlab mode (distinct from octave mode)
-(autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
+;;(autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 
 ;; Emacs 24 likes this
-(require 'octave nil t)
+;;(require 'octave nil t)
 
 (defun my-matlab-mode-hook ()
   ;; See matlab.el for more variable that can be user defined...

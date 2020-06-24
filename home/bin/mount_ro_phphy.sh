@@ -1,3 +1,3 @@
-#sudo mount -t cifs -o user=gcs6,uid=gcs6 dfa17.partners.org:ro_phphy$ /PHShome/gcs6/ro_phphy
-#sudo mount -t cifs -o user=gcs6,uid=gcs6 //dfa17.partners.org/ro_phphy$ /PHShome/gcs6/ro_phphy
-sudo mount -t cifs -o user=gcs6,uid=gcs6 //cifs2.partners.org/ro_phphy$ /PHShome/gcs6/ro_phphy
+#! /bin/sh
+
+sudo mount -t cifs -o user=gcs6,uid=$USER //cifs2.partners.org/ro_phphy$ $HOME/ro_phphy

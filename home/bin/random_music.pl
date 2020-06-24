@@ -4,7 +4,8 @@ use Cwd qw(abs_path);
 use File::Spec::Functions qw(abs2rel canonpath catdir catfile);
 use File::Copy::Recursive qw(dircopy);
 
-$basedir = "/dosf/play/mp3";
+#$basedir = "/dosf/play/mp3";
+$basedir = "/home/gsharp/Music/mp3";
 #$media_dir = "/media/SANSA FUZE/MUSIC";
 $media_dir = "/media/gsharp/SANSA FUZE/MUSIC";
 $num_copy = 10;
