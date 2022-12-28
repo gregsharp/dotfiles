@@ -205,3 +205,7 @@ esac
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
+if [ -d /snap/bin ]; then
+    PATH=$PATH:/snap/bin
+    export PATH
+fi
